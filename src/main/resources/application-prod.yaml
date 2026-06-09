@@ -1,0 +1,17 @@
+# Production: the dev observability/convenience settings are removed.
+#  - H2 console disabled (no DB exposure)
+#  - SQL logging off (no statement/parameter leakage, less overhead)
+#  - schema is managed by migrations, never auto-generated/dropped
+# A real deployment should also override spring.datasource.* to point at the managed database.
+spring:
+  h2:
+    console:
+      enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+
+logging:
+  level:
+    org.hibernate.SQL: warn

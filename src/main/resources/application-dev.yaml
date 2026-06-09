@@ -1,0 +1,18 @@
+# Developer-only settings: verbose SQL and the H2 web console.
+# NOT safe for production (leaks SQL, exposes the DB, recreates the schema).
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
